@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login usuario</title>
+	<meta http-equiv ="Content-Type" content="text/html; charset=utf-8">
+	<meta name="author" content="Pascual/ADI">
+	<meta name="description" content="ADI/Prac5">
+	<meta name="copyright" content="2015 ADI">
+	<meta charset="utf-8">
+
+	<!-- Incluimos bootstrap -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+	<!-- Incluimos jquery -->
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+
+	<!-- Es mejor ponerlos al final por si se engancha el script por lo menos que esté cargada la página -->
+	<script type="text/javascript" src="js/login.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$("#boton1").click(function(evento){
+				$("#errorPass").hide();
+				$("#errorNombre").hide();
+				$("#incorrectoUsuario").hide();
+				user = $("#usuario").val();
+				pass = $("#password").val();
+
+				if (user != "" && pass != "") 
+					login();
+				else
+					if (user == "")
+					{
+						evento.preventDefault();
+						$("#errorNombre").show();
+					}
+					if (pass == "")
+					{
+						evento.preventDefault();
+						$("#errorPass").show();
+					}
+
+			});
+		});		
+	</script>
+</head>
+<body>
+<header class="container">
+	<h1>Login</h1>
+</header>
+
+<main class="container">
+	<h3>Introduce usuario y password para realizar el login</h3>
+
+	<form id="form1" name="form1" class="form" role="form">
+		<div class="form-group">
+			<label for="usuario" class="control-label">Usuario: </label>
+			<input class="form-control" required type="text" name="usuario" id="usuario" maxlength="100" placeholder="Usuario">
+			<span class="obligatorio">(*)</span>
+			<div id="errorNombre" hidden="false" class="alert alert-danger">Error al introducir el nombre</div>
+		</div>
+
+		<div class="form-group">
+			<label for="password" class="control-label">Password: </label>
+			<input class="form-control" required type="password" name="password" id="password" maxlength="100" placeholder="Password">
+			<span class="obligatorio">(*)</span>
+		</div>
+		<div id="errorPass" hidden="false" class="alert alert-danger">Error al introducir el password</div>
+
+		<div class="form-group" align="right">
+			<input id="boton1" name="boton1" type="button" value="Login" class="btn btn-success">
+		</div>
+
+		<div id="incorrectoUsuario" hidden="false" class="alert alert-danger">El usuario o password es incorrecto</div>
+		<div class= "alert alert-info">(*): Campo obligatorio</div>
+	</form>
+
+	
+</main>
+
+<footer class="container">
+	<p>&copy: 2015 ADI & CO.</p>
+</footer>
+
+</body>
+</html>

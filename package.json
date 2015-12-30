@@ -1,0 +1,20 @@
+{
+  "name": "pract3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "salas.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pascual",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "cors": "^2.7.1",
+    "express": "^4.13.3",
+    "jwt-simple": "^0.3.1",
+    "moment": "^2.10.6",
+    "sequelize": "^3.12.1",
+    "sqlite3": "^3.1.0"
+  }
+}

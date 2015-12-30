@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Alquiler de salas movil</title>
+		<meta http-equiv ="Content-Type" content="text/html; charset=utf-8">
+		<meta name="author" content="Pascual/ADI">
+		<meta name="description" content="ADI/Prac5">
+		<meta name="copyright" content="2015 ADI">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<!-- Incluimos jquery -->
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+
+		<!-- Parche para abrir en local un HTML de jQuery Mobile con Chrome -->
+		<script>
+			 $(document).bind('mobileinit',function(){
+			   $.mobile.pushStateEnabled = false;
+			 });
+		</script>
+
+		<!-- Incluimos jqueryMobile -->
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
+		<link rel="stylesheet" href="vendor/waves/waves.min.css" />
+		<link rel="stylesheet" href="vendor/wow/animate.css" />
+		<link rel="stylesheet" href="css/nativedroid2.css" />
+
+		<meta name="mobile-web-app-capable" content="yes">
+	 	<meta name="apple-mobile-web-app-capable" content="yes" />
+    	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    	<!-- Incluimos nuestro.js -->
+    	<script type="text/javascript" src="js/login.js"></script>
+
+	</head>
+	<body>
+
+		<div data-role="page" id="principal">
+
+			<!--<nd2-include data-src="examples/fragments/panel.left.html"></nd2-include>
+
+			<div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+				<nd2-include data-src="examples/fragments/bottom.sheet.html"></nd2-include>
+			</div>-->
+
+			<div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+				<!--<a href="#bottomsheet" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s'><i class="zmdi zmdi-more-vert"></i></a>
+				<a href="#leftpanel" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>-->
+				<h1 class="wow fadeIn" data-wow-delay='0.4s'>Alquiler de salas</h1>
+			</div>
+
+			<div data-role="main" id="login" data-theme="a" class="ui-corner-all">
+			    <form>
+			        <div style="padding:10px 20px;">
+			            <h3>Please sign in</h3>
+						<label for="un" class="ui-hidden-accessible">Username:</label>
+						<input required type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
+
+						<label for="pw" class="ui-hidden-accessible">Password:</label>
+						<input required type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">
+						
+						<button type="submit" class="ui-btn ui-corner-all ui-btn-b">Sign in</button>
+					</div>
+			    </form>
+
+			</div>
+
+			<div data-role="footer" data-position="fixed" class="wow fadeInUp" data-wow-delay="0.2s">
+                <h2><p>&copy: 2015 ADI & CO.</p></h2>
+            </div>
+		</div>
+
+		<div data-role="#popupBasic" data-theme="a" id="popupErrorLogin" >
+			<p>Error al introducir los datos</p>
+		</div>
+
+		<!-- Incluimos jqueryMobile -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+		<script src="vendor/waves/waves.min.js"></script>
+		<script src="vendor/wow/wow.min.js"></script>
+		<script src="js/nativedroid2.js"></script>
+		<script src="nd2settings.js"></script>
+
+	</body>
+</html>

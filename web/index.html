@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menú del api</title>
+	<meta http-equiv ="Content-Type" content="text/html; charset=utf-8">
+	<meta name="author" content="Pascual/ADI">
+	<meta name="description" content="ADI/Prac5">
+	<meta name="copyright" content="2015 ADI">
+	<meta charset="utf-8">
+
+	<!-- Incluimos bootstrap -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+	<!-- Incluimos jquery -->
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	
+</head>
+<body>
+	<header class="container">
+			<h1>Menú del api</h1>
+	</header>
+
+	<main class="container">
+		<div id="divListaSala" name="divListaSala">
+			<h3>Listar todas las salas</h3>
+			<ul id="listaSalas">
+			</ul>
+			<input id="botonListarSalas" name="botonListarSalas" type="button" value="Listar salas" class="btn btn-primary">
+		</div>
+
+		<div id="divAddSala" name="divAddSala">
+			<h3>Datos nueva sala</h3>
+			<div class="form-group">
+				<label for="direccion" class="control-label">Direccion: </label>
+				<input class="form-control" required type="text" name="direccion" id="direccion" maxlength="100" placeholder="Direccion">
+			</div>
+			<div class="form-group">
+				<label for="localidad" class="control-label">Localidad: </label>
+				<input class="form-control" required type="text" name="localidad" id="localidad" maxlength="100" placeholder="Localidad">
+			</div>
+			<div id="incorrectoSala" hidden="false" class="alert alert-danger">Faltan valores de entrada, introduce: {direccion: , localidad: }</div>
+			<div class="form-group">
+				<input id="botonAnnadirSala" name="botonAnnadirSala"type="button" value="Añadir Sala" class="btn btn-primary">
+			</div>
+		</div>
+
+		<div>
+			<h3>Listar todas los alquileres</h3>
+			<ul id="listaAlquileres">
+			</ul>
+			<input id="botonListarAlquileres" name="botonListarAlquileres" type="button" value="Listar alquileres" class="btn btn-primary">
+		</div>
+
+		<div id="divAddAlquiler" name="divAddAlquiler">
+			<h3>Datos nuevo alquiler</h3>
+			<div class="form-group">
+				<label for="fechaIni" class="control-label">Fecha inicio: </label>
+				<input class="form-control" required type="date" name="fechaIni" id="fechaIni" maxlength="100" placeholder="Selecciona una fecha Inicial">
+			</div>
+			<div class="form-group">
+				<label for="fechaFin" class="control-label">Fecha final: </label>
+				<input class="form-control" required type="date" name="fechaFin" id="fechaFin" maxlength="100" placeholder="Selecciona una fecha final">
+			</div>
+			<div class="form-group">
+				<label for="comentario" class="control-label">Comentario: </label>
+				<input class="form-control" required type="text" name="comentario" id="comentario" maxlength="100" placeholder="Introduce un comentario">
+			</div>
+			<div id="incorrectoAlquiler" hidden="false" class="alert alert-danger">Faltan valores de entrada, introduce: {fechaIni: , fechaFin: , comentario:}</div>
+			<div class="form-group">
+				<input id="botonAnnadirAlquiler" name="botonAnnadirAlquiler"type="button" value="Añadir Alquiler" class="btn btn-primary">
+			</div>
+		</div>
+	</main>
+
+	<footer class="container">
+		<p>&copy: 2015 ADI & CO.</p>
+	</footer>
+</body>
+</html>
