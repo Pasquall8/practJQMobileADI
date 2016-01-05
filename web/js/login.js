@@ -28,9 +28,6 @@ function login()
 	xhr.send();
 }
 
-	
-	//document.location.href = "login.html";
-
 function loginMobile()
 {
 	localStorage.setItem("token", "");
@@ -39,19 +36,20 @@ function loginMobile()
 	var params = "user="+$("#usuario").val()+"&password="+$("#password").val();
 	xhr.open('POST', URL+"?"+params, true);
 	xhr.onreadystatechange = function() {
-		//alert($("#usuario").val());
+
 		if(xhr.readyState == 4 && xhr.status == 200)
 		{
 			var token = xhr.responseText;
 			//guardamos en el localStorage la respuesta del login, que lleva el token jwt
 			localStorage.setItem("token", token);
 			
-			//redirigimos a la pagina principal
-
+			//redirigimos a la pagina menu (principal es login)
+			document.location.href = "movil.html#menu";
 		}
 		else if(xhr.readyState == 4 && xhr.status == 403)
 		{
-			$( "#popupErrorLogin" ).popup( "open", options );
+			$( "#popupErrorLogin" ).popup( "open");
+			$("#incorrectoUsuario").show();
 		}
 	}
 	xhr.setRequestHeader('Authorization', 'Barer '+localStorage.getItem("token"));
