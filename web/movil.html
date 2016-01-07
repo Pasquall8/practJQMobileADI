@@ -98,7 +98,7 @@
 				<ul data-role="listview" data-filter="true" data-filter-reveal="false" data-filter-placeholder="Buscar opción..." class="ui-listview">
 					<li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit ui-first-child">Opciones</li>
 					<li class=""><a id="boton_salas_disponibles" href="movil.html#salas" title="Salas" class="ui-btn ui-btn-icon-right ui-icon-carat-r waves-effect waves-button waves-effect waves-button" onclick="listarSalas()">Salas Disponibles</a></li>
-					<li class=""><a href="movil.html#alquiler" title="Alquiler" class="ui-btn ui-btn-icon-right ui-icon-carat-r waves-effect waves-button waves-effect waves-button">Alquileres efectuados</a></li>
+					<li class=""><a href="movil.html#alquiler" title="Alquiler" class="ui-btn ui-btn-icon-right ui-icon-carat-r waves-effect waves-button waves-effect waves-button " onclick="listarAlquileres()">Alquileres efectuados</a></li>
 					<li class=""><a href="movil.html#perfil" title="perfil" class="ui-btn ui-btn-icon-right ui-icon-carat-r waves-effect waves-button waves-effect waves-button">Mi Perfil</a></li>
 	        	</ul>
 			</div>
@@ -128,11 +128,12 @@
 	<!--ALQUILER -->
 		<div data-role="page" id="alquiler">
 			<div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">			
-				<h1 class="wow fadeIn" data-wow-delay='0.4s'><a href="movil.html#menu" class="ui-btn ui-mini ui-btn-inline ui-btn-icon-block waves-effect waves-button waves-effect waves-button"><i class="zmdi zmdi-replay zmd-2x"></i>BACK</a>   Lista de tus alquileres</h1>
+				<h1 class="wow fadeIn" data-wow-delay='0.4s'><a href="movil.html#menu" class="ui-btn ui-mini ui-btn-inline ui-btn-icon-block waves-effect waves-button waves-effect waves-button"><i class="zmdi zmdi-replay zmd-2x"></i>BACK</a>   Lista de alquileres</h1>
 			</div>
 
 			<div data-role="main" data-theme="a" class="ui-corner-all">
-				
+				<ul id="listaAlquileres" data-role="listview" data-filter="false" data-filter-reveal="false" class="ui-listview">
+				</ul>
 			</div>
 
 			<div data-role="footer" data-position="fixed" class="wow fadeInUp" data-wow-delay="0.2s">
