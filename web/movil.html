@@ -75,7 +75,10 @@
 
 					if (ini !="" && fin != "" && salaID !="")
 					{
-						editarAlquiler();
+						editarAlquiler(document.getElementById("id_alquiler_detalle").innerHTML);
+						alert("Alquiler editado correctamente");
+						document.location.href = "movil.html#alquiler";
+						listarAlquileres();
 					}
 					else
 					{

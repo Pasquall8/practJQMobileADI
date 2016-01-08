@@ -99,12 +99,12 @@ function editarSala(id){
 	}
 	xhr.setRequestHeader('Authorization', 'Barer '+localStorage.getItem("token"));
 	xhr.setRequestHeader("Content-type", "application/json");
-	var editarUsuario = {
+	var editarSala = {
     	direccion: document.getElementById('detalle_ sala_direccion').value,
     	localidad: document.getElementById('detalle_ sala_localidad').value,
     	tipo: 0
     }
-    xhr.send(JSON.stringify(editarUsuario));
+    xhr.send(JSON.stringify(editarSala));
 }
 
 
@@ -191,7 +191,36 @@ function verDetallesAlquileres(id) {
 	xhr.send();
 }
 
-
+function editarAlquiler(id){
+	var xhr = new XMLHttpRequest();
+    xhr.open('PUT', URL+"/api/alquileres/"+id+"/update", true);
+	if (xhr.readyState==4 && xhr.status==200) 
+	{
+		alert(xhr.responseText);
+	}
+	else if (xhr.readyState==4 && xhr.status==400) 
+	{
+		alert(xhr.responseText);
+	}
+	else if (xhr.readyState==4 && xhr.status==404) 
+	{
+		alert(xhr.responseText);
+	}
+	else if (xhr.readyState==4 && xhr.status==403) 
+	{
+		document.location.href = "movil.html#principal";
+	}
+	xhr.setRequestHeader('Authorization', 'Barer '+localStorage.getItem("token"));
+	xhr.setRequestHeader("Content-type", "application/json");
+	var editarAlquiler = {
+    	fechaIni: document.getElementById('detalle_alquiler_fechaIni').value,
+    	fechaFin: document.getElementById('detalle_alquiler_fechaFin').value,
+    	comentario: document.getElementById('detalle_alquiler_comentario').value,
+    	SalaId: document.getElementById('detalle_alquiler_sala').value,
+    	tipo: 0
+    }
+    xhr.send(JSON.stringify(editarAlquiler));
+}
 
 //<a href="#" class="ui-btn ui-btn-inline ui-btn-raised waves-effect waves-button waves-effect waves-button"><i class="zmdi zmdi-plus zmd-2x"></i></a>
 //<a href="#" class="ui-btn ui-btn-inline ui-btn-raised waves-effect waves-button waves-effect waves-button"><i class="zmdi zmdi-delete zmd-2x"></i></a>
