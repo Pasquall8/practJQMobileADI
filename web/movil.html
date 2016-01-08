@@ -30,6 +30,8 @@
     	<script type="text/javascript">
     		//Al apretar el boton para acceder comprobamos que los datos no son vacios
     		$(document).ready(function(){
+    			document.getElementById('nueva_sala_direccion').value = "";
+				document.getElementById('nueva_sala_localidad').value="";
 
 				$("#boton_login").click(function(evento){
 					$("#incorrectoUsuario").hide();
@@ -105,6 +107,30 @@
 					{
 						evento.preventDefault();
 						$("#datosErrorAddSala").show();
+					}
+				});
+
+				$("#boton_add_alquiler").click(function(evento){
+					$("#datosErrorAddAlquiler").hide();
+					ini = $("#nuevo_alquiler_fechaIni").val();
+					fin = $("#nuevo_alquiler_fechaFin").val();
+					salaID = $("#nuevo_alquiler_sala").val();
+
+					//Si es asi lanzaremos la funcion loginMobile()
+					if (ini !="" && fin != "" && salaID !="")
+					{
+						addAlquiler();
+						document.location.href = "movil.html#alquiler";
+						document.getElementById('nuevo_alquiler_comentario').value = "";
+						document.getElementById('nuevo_alquiler_fechaIni').value="";
+						document.getElementById('nuevo_alquiler_fechaFin').value = "";
+						document.getElementById('nuevo_alquiler_sala').value="";
+						listarAlquileres();						
+					}
+					else
+					{
+						evento.preventDefault();
+						$("#datosErrorAddAlquiler").show();
 					}
 				});
 			});	
@@ -194,16 +220,18 @@
 			</div>
 
 			<div data-role="main" data-theme="a" class="ui-corner-all">
-				<div style="padding:10px 20px;">
-
-						<label for="direccion" class="ui-hidden-accessible">Dirección:</label>
+				<form id="form_addAlquiler">
+					<div style="padding:10px 20px;">
+					
+						<label for="nueva_sala_direccion" class="ui-hidden-accessible">Dirección:</label>
 						<input required type="text" name="direccion" id="nueva_sala_direccion" value="" placeholder="Dirección(*)" data-theme="a">
 
-						<label for="localidad" class="ui-hidden-accessible">Localidad:</label>
+						<label for="nueva_sala_localidad" class="ui-hidden-accessible">Localidad:</label>
 						<input required type="text" name="localidad" id="nueva_sala_localidad" value="" placeholder="Localidad(*)" data-theme="a">
 						
 						<button type="button" id="boton_add_sala" class="ui-btn ui-corner-all ui-btn-b">Añadir</button>
 					</div>
+				</form>
 
 					<div class="ui-icon-alert" id="datosErrorAddSala" hidden="false">Faltan datos, * Obligatorios</div>
 			</div>
@@ -220,14 +248,14 @@
 			</div>
 
 			<div data-role="main" data-theme="a" class="ui-corner-all">
-				<form id="form_login">
+				<form id="form_editarSala">
 			        <div style="padding:10px 20px;">
 			            <h3>SALA </h3><h3 id="id_sala_detalle">ID</h3>
 						
-						<label for="direccion" class="ui-hidden-accessible">Dirección:</label>
+						<label for="detalle_ sala_direccion" class="ui-hidden-accessible">Dirección:</label>
 						<input required type="text" name="direccion" id="detalle_ sala_direccion" value="" placeholder="Dirección" data-theme="a">
 
-						<label for="localidad" class="ui-hidden-accessible">Localidad:</label>
+						<label for="detalle_ sala_localidad" class="ui-hidden-accessible">Localidad:</label>
 						<input required type="text" name="localidad" id="detalle_ sala_localidad" value="" placeholder="Localidad" data-theme="a">
 						
 						<button type="button" id="boton_edita_sala" class="ui-btn ui-corner-all ui-btn-b">Editar</button>
@@ -253,7 +281,7 @@
 				</ul>
 			</div>
 
-			<div align="right" data-position="fixed"> <a href="javascript:addAlquiler()" class="ui-btn ui-btn-inline ui-btn-raised waves-effect waves-button waves-effect waves-button" onclick="document.location.href = 'movil.html#addAlquiler';"><i class="zmdi zmdi-plus zmd-2x"></i></a> </div>
+			<div align="right" data-position="fixed"> <a class="ui-btn ui-btn-inline ui-btn-raised waves-effect waves-button waves-effect waves-button" onclick="document.location.href = 'movil.html#addAlquiler';"><i class="zmdi zmdi-plus zmd-2x"></i></a> </div>
 
 			<div data-role="footer" data-position="fixed" class="wow fadeInUp" data-wow-delay="0.2s">
                 <h2><p>&copy: 2015 ADI & CO.</p></h2>
@@ -267,7 +295,26 @@
 			</div>
 
 			<div data-role="main" data-theme="a" class="ui-corner-all">
-				
+				<form id="form_addAlquiler">
+			        <div style="padding:10px 20px;">
+						
+						<label for="nuevo_alquiler_comentario" class="ui-hidden-accessible">Comentario:</label>
+						<input type="text" name="nuevo_alquiler_comentario" id="nuevo_alquiler_comentario" value="dd" placeholder="Comentario" data-theme="a">
+
+						<label for="nuevo_alquiler_fechaIni" class="ui-hidden-accessible">Fecha inicio:</label>
+						<input required type="date" name="nuevo_alquiler_fechaIni" id="nuevo_alquiler_fechaIni" value="" placeholder="Fecha inicio(*)" data-theme="a">
+
+						<label for="nuevo_alquiler_fechaFin" class="ui-hidden-accessible">Fecha fin:</label>
+						<input required type="date" name="nuevo_alquiler_fechaFin" id="nuevo_alquiler_fechaFin" value="" placeholder="Fecha fin(*)" data-theme="a">
+
+						<label for="nuevo_alquiler_sala" class="ui-hidden-accessible">ID SALA:</label>
+						<input required type="text" name="nuevo_alquiler_sala" id="nuevo_alquiler_sala" value="" placeholder="ID sala(*)" data-theme="a">
+
+						<button type="button" id="boton_add_alquiler" class="ui-btn ui-corner-all ui-btn-b">Añadir</button>
+					</div>
+			    </form>
+
+				<div class="ui-icon-alert" id="datosErrorAddAlquiler" hidden="false">Faltan datos, * Obligatorios</div>
 			</div>
 
 			<div data-role="footer" data-position="fixed" class="wow fadeInUp" data-wow-delay="0.2s">
@@ -282,7 +329,7 @@
 			</div>
 
 			<div data-role="main" data-theme="a" class="ui-corner-all">
-				<form id="form_login">
+				<form id="form_editarAlquiler">
 			        <div style="padding:10px 20px;">
 						<h3> ALQUILER </h3><h3 id="id_alquiler_detalle">ID</h3>
 						
@@ -295,7 +342,7 @@
 						<label for="detalle_alquiler_fechaFin" class="ui-hidden-accessible">Fecha fin:</label>
 						<input required type="text" name="detalle_alquiler_fechaFin" id="detalle_alquiler_fechaFin" value="" placeholder="Fecha fin" data-theme="a">
 
-						<label for="detalle_alquiler_sala" class="ui-hidden-accessible">Fecha fin:</label>
+						<label for="detalle_alquiler_sala" class="ui-hidden-accessible">ID SALA:</label>
 						<input required type="text" name="detalle_alquiler_sala" id="detalle_alquiler_sala" value="" placeholder="ID sala" data-theme="a">
 
 						<button type="button" id="boton_edita_alquiler" class="ui-btn ui-corner-all ui-btn-b">Editar</button>

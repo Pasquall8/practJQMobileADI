@@ -148,7 +148,7 @@ function listarAlquileres(){
                      '<a href="javascript:verDetallesAlquileres('+alquileres.rows[i].id+')" class="ui-btn-icon-block waves-effect waves-button waves-effect waves-button"><i class="zmdi zmdi-edit zmd-2x"></i></a> ' +  
                      '</li>';
                 else
-					document.getElementById("listaSalas").insertAdjacentHTML('beforeend', '<li id="id_'+alquileres.rows[i].id+'">Alquiler '+alquileres.rows[iS].id+': '+alquileres.rows[i].fechaIni+'-'+alquileres.rows[i].fechaFin+' '+alquileres.rows[i].comentario+' '+
+					document.getElementById("listaAlquileres").insertAdjacentHTML('beforeend', '<li id="id_'+alquileres.rows[i].id+'">Alquiler '+alquileres.rows[i].id+': '+alquileres.rows[i].fechaIni+'-'+alquileres.rows[i].fechaFin+' '+alquileres.rows[i].comentario+' '+
                      '<a href="javascript:deleteAlquileres('+alquileres.rows[i].id+')" class="ui-btn-raised waves-effect waves-button waves-effect waves-button"><i class="zmdi zmdi-delete zmd-2x"></i></a> ' +
                      '<a href="javascript:verDetallesAlquileres('+alquileres.rows[i].id+')" class="ui-btn-icon-block waves-effect waves-button waves-effect waves-button"><i class="zmdi zmdi-edit zmd-2x"></i></a> ' +  
                      '</li>');
@@ -244,6 +244,37 @@ function editarAlquiler(id){
     	tipo: 0
     }
     xhr.send(JSON.stringify(editarAlquiler));
+}
+
+function addAlquiler(id){
+	var xhr = new XMLHttpRequest();
+    xhr.open('POST', URL+"/api/alquileres/", true);
+	if (xhr.readyState==4 && xhr.status==201) 
+	{
+		alert(xhr.responseText);
+	}
+	else if (xhr.readyState==4 && xhr.status==400) 
+	{
+		alert(xhr.responseText);
+	}
+	else if (xhr.readyState==4 && xhr.status==404) 
+	{
+		alert(xhr.responseText);
+	}
+	else if (xhr.readyState==4 && xhr.status==403) 
+	{
+		document.location.href = "movil.html#principal";
+	}
+	xhr.setRequestHeader('Authorization', 'Barer '+localStorage.getItem("token"));
+	xhr.setRequestHeader("Content-type", "application/json");
+	var addAlquiler = {
+    	fechaIni: document.getElementById('nuevo_alquiler_fechaIni').value,
+    	fechaFin: document.getElementById('nuevo_alquiler_fechaFin').value,
+    	comentario: document.getElementById('nuevo_alquiler_comentario').value,
+    	salaId: document.getElementById('nuevo_alquiler_sala').value,
+    	tipo: 0
+    }
+    xhr.send(JSON.stringify(addAlquiler));
 }
 
 //<a href="#" class="ui-btn ui-btn-inline ui-btn-raised waves-effect waves-button waves-effect waves-button"><i class="zmdi zmdi-plus zmd-2x"></i></a>
