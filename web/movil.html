@@ -71,8 +71,9 @@
 					$("#datosErrorEditarAlquiler").hide();
 					ini = $("#detalle_alquiler_fechaIni").val();
 					fin = $("#detalle_alquiler_fechaFin").val();
+					salaID = $("#detalle_alquiler_sala").val();
 
-					if (ini !="" && fin != "")
+					if (ini !="" && fin != "" && salaID !="")
 					{
 						editarAlquiler();
 					}
@@ -214,7 +215,7 @@
 			<div data-role="main" data-theme="a" class="ui-corner-all">
 				<form id="form_login">
 			        <div style="padding:10px 20px;">
-			            <h3 id="id_alquiler_detalle">ID ALQUILER</h3>
+						<h3> ALQUILER </h3><h3 id="id_alquiler_detalle">ID</h3>
 						
 						<label for="detalle_alquiler_comentario" class="ui-hidden-accessible">Comentario:</label>
 						<input type="text" name="detalle_alquiler_comentario" id="detalle_alquiler_comentario" value="dd" placeholder="Comentario" data-theme="a">
@@ -224,6 +225,9 @@
 
 						<label for="detalle_alquiler_fechaFin" class="ui-hidden-accessible">Fecha fin:</label>
 						<input required type="text" name="detalle_alquiler_fechaFin" id="detalle_alquiler_fechaFin" value="" placeholder="Fecha fin" data-theme="a">
+
+						<label for="detalle_alquiler_sala" class="ui-hidden-accessible">Fecha fin:</label>
+						<input required type="text" name="detalle_alquiler_sala" id="detalle_alquiler_sala" value="" placeholder="ID sala" data-theme="a">
 
 						<button type="button" id="boton_edita_alquiler" class="ui-btn ui-corner-all ui-btn-b">Editar</button>
 					</div>

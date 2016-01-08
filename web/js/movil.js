@@ -171,10 +171,11 @@ function verDetallesAlquileres(id) {
 			document.location.href = "movil.html#detalleAlquiler";
 
 			var alquiler= JSON.parse(xhr.responseText);
-			document.getElementById("id_alquiler_detalle").innerHTML = "Alquiler "+alquiler.id;
+			document.getElementById("id_alquiler_detalle").innerHTML = alquiler.id;
 			document.getElementById("detalle_alquiler_fechaIni").value = alquiler.fechaIni;
 			document.getElementById("detalle_alquiler_fechaFin").value = alquiler.fechaFin;
 			document.getElementById("detalle_alquiler_comentario").value = alquiler.comentario;
+			document.getElementById("detalle_alquiler_sala").value = alquiler.SalaId;
 		}
 		else if (xhr.readyState == 4 && xhr.status == 404) 
 		{
