@@ -52,6 +52,32 @@ function deleteSala(id){
 	xhr.send();
 }
 
+function verDetallesSala(id) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', URL+"/api/salas/"+id, true);
+    xhr.onreadystatechange = function() {
+		if (xhr.readyState==4 && xhr.status==200) 
+		{
+			document.location.href = "movil.html#detalleSala";
+			var salas = JSON.parse(xhr.responseText);
+			document.getElementById("id_sala_detalle").val = "Sala "+salas.id;
+			document.getElementById("detalle_ sala_direccion").value = salas.direccion;
+			document.getElementById("detalle_ sala_localidad").value = salas.localidad;
+		}
+		else if (xhr.readyState == 4 && xhr.status == 404) 
+		{
+			alert(xhr.responseText);
+		}
+		else if(xhr.readyState == 4 && xhr.status == 403)
+		{
+			document.location.href = "movil.html#principal";
+		}
+	}
+    xhr.setRequestHeader('Authorization', 'Barer '+localStorage.getItem("token"));
+	xhr.setRequestHeader('Content-Type', 'aplication/x-www-form-urlencoded');
+	xhr.send();
+}
+
 
 /////////////////////////////// ALQUILERES ///////////////////////////////
 
