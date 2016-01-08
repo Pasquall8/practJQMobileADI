@@ -60,7 +60,7 @@ function verDetallesSala(id) {
 		{
 			document.location.href = "movil.html#detalleSala";
 			var salas = JSON.parse(xhr.responseText);
-			document.getElementById("id_sala_detalle").val = "Sala "+salas.id;
+			document.getElementById("id_sala_detalle").innerHTML = "Sala "+salas.id;
 			document.getElementById("detalle_ sala_direccion").value = salas.direccion;
 			document.getElementById("detalle_ sala_localidad").value = salas.localidad;
 		}
@@ -129,6 +129,34 @@ function deleteAlquileres(id){
 		}
 	}
 	xhr.setRequestHeader('Authorization', 'Barer '+localStorage.getItem("token"));
+	xhr.setRequestHeader('Content-Type', 'aplication/x-www-form-urlencoded');
+	xhr.send();
+}
+
+function verDetallesAlquileres(id) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', URL+"/api/alquileres/"+id, true);
+    xhr.onreadystatechange = function() {
+		if (xhr.readyState==4 && xhr.status==200) 
+		{
+			document.location.href = "movil.html#detalleAlquiler";
+
+			var alquiler= JSON.parse(xhr.responseText);
+			document.getElementById("id_alquiler_detalle").innerHTML = "Alquiler "+alquiler.id;
+			document.getElementById("detalle_alquiler_fechaIni").value = alquiler.fechaIni;
+			document.getElementById("detalle_alquiler_fechaFin").value = alquiler.fechaFin;
+			document.getElementById("detalle_alquiler_comentario").value = alquiler.comentario;
+		}
+		else if (xhr.readyState == 4 && xhr.status == 404) 
+		{
+			alert(xhr.responseText);
+		}
+		else if(xhr.readyState == 4 && xhr.status == 403)
+		{
+			document.location.href = "movil.html#principal";
+		}
+	}
+    xhr.setRequestHeader('Authorization', 'Barer '+localStorage.getItem("token"));
 	xhr.setRequestHeader('Content-Type', 'aplication/x-www-form-urlencoded');
 	xhr.send();
 }
