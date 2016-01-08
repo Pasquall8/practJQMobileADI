@@ -107,6 +107,30 @@ function editarSala(id){
     xhr.send(JSON.stringify(editarSala));
 }
 
+function addSala(id){
+	var xhr = new XMLHttpRequest();
+    xhr.open('POST', URL+"/api/salas/", true);
+	if (xhr.readyState==4 && xhr.status==201) 
+	{
+		alert(xhr.responseText);
+	}
+	else if (xhr.readyState==4 && xhr.status==400) 
+	{
+		alert(xhr.responseText);
+	}
+	else if (xhr.readyState==4 && xhr.status==403) 
+	{
+		document.location.href = "movil.html#principal";
+	}
+	xhr.setRequestHeader('Authorization', 'Barer '+localStorage.getItem("token"));
+	xhr.setRequestHeader("Content-type", "application/json");
+	var addSala = {
+    	direccion: document.getElementById('nueva_sala_direccion').value,
+    	localidad: document.getElementById('nueva_sala_localidad').value,
+    	tipo: 0
+    }
+    xhr.send(JSON.stringify(addSala));
+}
 
 /////////////////////////////// ALQUILERES ///////////////////////////////
 

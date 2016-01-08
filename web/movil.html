@@ -56,7 +56,7 @@
 					if (dir !="" && local != "")
 					{
 						editarSala(document.getElementById("id_sala_detalle").innerHTML);
-						alert("Sala editada correctamente");
+						//alert("Sala editada correctamente");
 						document.location.href = "movil.html#salas";
 						listarSalas();
 					}
@@ -76,7 +76,7 @@
 					if (ini !="" && fin != "" && salaID !="")
 					{
 						editarAlquiler(document.getElementById("id_alquiler_detalle").innerHTML);
-						alert("Alquiler editado correctamente");
+						//alert("Alquiler editado correctamente");
 						document.location.href = "movil.html#alquiler";
 						listarAlquileres();
 					}
@@ -84,6 +84,27 @@
 					{
 						evento.preventDefault();
 						$("#datosErrorEditarAlquiler").show();
+					}
+				});
+
+				$("#boton_add_sala").click(function(evento){
+					$("#datosErrorAddSala").hide();
+					dir = $("#nueva_sala_direccion").val();
+					loc = $("#nueva_sala_localidad").val();
+
+					//Si es asi lanzaremos la funcion loginMobile()
+					if (dir !="" && loc != "")
+					{
+						addSala();
+						document.location.href = "movil.html#salas";
+						document.getElementById('nueva_sala_direccion').value = "";
+						document.getElementById('nueva_sala_localidad').value="";
+						listarSalas();						
+					}
+					else
+					{
+						evento.preventDefault();
+						$("#datosErrorAddSala").show();
 					}
 				});
 			});	
@@ -159,7 +180,7 @@
 				</ul>
 			</div>
 
-			<div align="right" data-position="fixed"> <a href="javascript:addSala()" class="ui-btn ui-btn-inline ui-btn-raised waves-effect waves-button waves-effect waves-button" onclick="document.location.href = 'movil.html#addSala';"><i class="zmdi zmdi-plus zmd-2x"></i></a> </div>
+			<div align="right" data-position="fixed"> <a class="ui-btn ui-btn-inline ui-btn-raised waves-effect waves-button waves-effect waves-button" onclick="document.location.href = 'movil.html#addSala';"><i class="zmdi zmdi-plus zmd-2x"></i></a> </div>
 
 			<div data-role="footer" data-position="fixed" class="wow fadeInUp" data-wow-delay="0.2s">
                 <h2><p>&copy: 2015 ADI & CO.</p></h2>
@@ -173,7 +194,18 @@
 			</div>
 
 			<div data-role="main" data-theme="a" class="ui-corner-all">
-				
+				<div style="padding:10px 20px;">
+
+						<label for="direccion" class="ui-hidden-accessible">Dirección:</label>
+						<input required type="text" name="direccion" id="nueva_sala_direccion" value="" placeholder="Dirección(*)" data-theme="a">
+
+						<label for="localidad" class="ui-hidden-accessible">Localidad:</label>
+						<input required type="text" name="localidad" id="nueva_sala_localidad" value="" placeholder="Localidad(*)" data-theme="a">
+						
+						<button type="button" id="boton_add_sala" class="ui-btn ui-corner-all ui-btn-b">Añadir</button>
+					</div>
+
+					<div class="ui-icon-alert" id="datosErrorAddSala" hidden="false">Faltan datos, * Obligatorios</div>
 			</div>
 
 			<div data-role="footer" data-position="fixed" class="wow fadeInUp" data-wow-delay="0.2s">
