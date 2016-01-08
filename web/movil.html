@@ -55,7 +55,10 @@
 
 					if (dir !="" && local != "")
 					{
-						editarSala();
+						editarSala(document.getElementById("id_sala_detalle").innerHTML);
+						alert("Sala editada correctamente");
+						document.location.href = "movil.html#salas";
+						listarSalas();
 					}
 					else
 					{
@@ -166,7 +169,7 @@
 			<div data-role="main" data-theme="a" class="ui-corner-all">
 				<form id="form_login">
 			        <div style="padding:10px 20px;">
-			            <h3 id="id_sala_detalle">ID SALA</h3>
+			            <h3>SALA </h3><h3 id="id_sala_detalle">ID</h3>
 						
 						<label for="direccion" class="ui-hidden-accessible">Dirección:</label>
 						<input required type="text" name="direccion" id="detalle_ sala_direccion" value="" placeholder="Dirección" data-theme="a">

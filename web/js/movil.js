@@ -60,7 +60,7 @@ function verDetallesSala(id) {
 		{
 			document.location.href = "movil.html#detalleSala";
 			var salas = JSON.parse(xhr.responseText);
-			document.getElementById("id_sala_detalle").innerHTML = "Sala "+salas.id;
+			document.getElementById("id_sala_detalle").innerHTML = salas.id;
 			document.getElementById("detalle_ sala_direccion").value = salas.direccion;
 			document.getElementById("detalle_ sala_localidad").value = salas.localidad;
 		}
@@ -76,6 +76,35 @@ function verDetallesSala(id) {
     xhr.setRequestHeader('Authorization', 'Barer '+localStorage.getItem("token"));
 	xhr.setRequestHeader('Content-Type', 'aplication/x-www-form-urlencoded');
 	xhr.send();
+}
+
+function editarSala(id){
+	var xhr = new XMLHttpRequest();
+    xhr.open('PUT', URL+"/api/salas/"+id+"/update", true);
+	if (xhr.readyState==4 && xhr.status==200) 
+	{
+		alert(xhr.responseText);
+	}
+	else if (xhr.readyState==4 && xhr.status==400) 
+	{
+		alert(xhr.responseText);
+	}
+	else if (xhr.readyState==4 && xhr.status==404) 
+	{
+		alert(xhr.responseText);
+	}
+	else if (xhr.readyState==4 && xhr.status==403) 
+	{
+		document.location.href = "movil.html#principal";
+	}
+	xhr.setRequestHeader('Authorization', 'Barer '+localStorage.getItem("token"));
+	xhr.setRequestHeader("Content-type", "application/json");
+	var editarUsuario = {
+    	direccion: document.getElementById('detalle_ sala_direccion').value,
+    	localidad: document.getElementById('detalle_ sala_localidad').value,
+    	tipo: 0
+    }
+    xhr.send(JSON.stringify(editarUsuario));
 }
 
 
@@ -160,6 +189,8 @@ function verDetallesAlquileres(id) {
 	xhr.setRequestHeader('Content-Type', 'aplication/x-www-form-urlencoded');
 	xhr.send();
 }
+
+
 
 //<a href="#" class="ui-btn ui-btn-inline ui-btn-raised waves-effect waves-button waves-effect waves-button"><i class="zmdi zmdi-plus zmd-2x"></i></a>
 //<a href="#" class="ui-btn ui-btn-inline ui-btn-raised waves-effect waves-button waves-effect waves-button"><i class="zmdi zmdi-delete zmd-2x"></i></a>
